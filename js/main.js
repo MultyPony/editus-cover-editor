@@ -50,37 +50,37 @@ var canvas = new fabric.Canvas('c', {
   // canvas.add(interText);
 
   var circle = new fabric.Circle({
-radius: 100,
-fill: '#eef',
-scaleY: 0.5,
-originX: 'center',
-originY: 'center'
+    radius: 100,
+    fill: '#eef',
+    scaleY: 0.5,
+    originX: 'center',
+    originY: 'center'
 });
 
 var text = new fabric.Text('ТОП-10', {
-fontSize: 30,
-originX: 'center',
-originY: 'center'
+  fontSize: 30,
+  originX: 'center',
+  originY: 'center'
 });
 
 var group = new fabric.Group([ circle, text ], {
-left: 150,
-top: 100,
-angle: -10
+  left: 150,
+  top: 100,
+  angle: -10
 });
 
 var bookName = new fabric.Text('Война и мир', {
-fontSize: 40,
-top: 40,
-// left: 20,
+  fontSize: 40,
+  top: 40,
+  // left: 20,
 });
 
 var bookAuthor = new fabric.Text('Л. Толстой', {
-fill: 'white',
+  fill: 'white',
 
-fontSize: 30,
-top: 550,
-textAlign: 'center',
+  fontSize: 30,
+  top: 550,
+  textAlign: 'center',
 });
 
 
@@ -91,18 +91,44 @@ bookName.centerH();
 bookAuthor.centerH();
 
 
+var fonts = ["Roboto", "Lora", "Roboto Slab"];
 
+function loadAndUse(font) {
+  var myfont = new FontFaceObserver(font)
+  myfont.load()
+    .then(function() {
+      // when font is loaded, use it.
+      canvas.getActiveObject().set("fontFamily", font);
+      canvas.requestRenderAll();
+    }).catch(function(e) {
+      console.log(e)
+      alert('Ошибка при загрузке шрифта ' + font);
+    });
+}
 
 let fontFamily = new SlimSelect({
     select: '.ff-select',
     showSearch: false,
     onChange: (info) => {
-      console.log(info)
+      console.log(info);
+      let obj = canvas.getActiveObject();
+      if (obj.get('type')==="text") {
+        if (fonts.includes(info.value)) {
+          loadAndUse(info.value);
+        } else {
+          obj.set("fontFamily", info.value);
+          canvas.renderAll();
+        }
+        // console.log(obj);
+      }
     },
     data: [
       {text: 'Times New Roman'},
-      {text: 'Oi'},
-      {text: 'Anoter Font'}
+      {text: 'Arial'},
+      {text: 'Courier New'},
+      {text: 'Roboto'},
+      {text: 'Roboto Slab'},
+      {text: 'Lora'},
     ],
 });
 
@@ -299,6 +325,7 @@ function enableFontOptions() {
 }
 
 disableFontOptions();
-window.canvas = canvas;
-window.dfo = disableFontOptions;
-window.efo = enableFontOptions;
+// window.canvas = canvas;
+// window.dfo = disableFontOptions;
+// window.efo = enableFontOptions;
+
