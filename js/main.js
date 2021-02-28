@@ -119,9 +119,21 @@ let fontSize = new SlimSelect({
       }
     },
     data: [
+      {text: '8'},
+      {text: '9'},
+      {text: '10'},
+      {text: '11'},
+      {text: '12'},
       {text: '14'},
       {text: '16'},
-      {text: '18'}
+      {text: '18'},
+      {text: '24'},
+      {text: '30'},
+      {text: '36'},
+      {text: '48'},
+      {text: '60'},
+      {text: '72'},
+      {text: '96'},
     ],
 });
 
@@ -256,9 +268,22 @@ canvas.on('selection:cleared', function(options){
   disableFontOptions();
 });
 
+let fontColor = document.querySelector('.color-input');
+
+fontColor.oninput = changeTextColor;
+fontColor.onchange = changeTextColor;
+
+function changeTextColor() {
+  let obj = canvas.getActiveObject();
+    if (obj.get('type')==="text") {
+      obj.set("fill", this.value);
+      canvas.renderAll();
+      console.log(obj);
+    }
+}
+
 function disableFontOptions() {
   let fontOptionsDiv = document.querySelector('.font-options');
-  let fontColor = document.querySelector('.color-input');
   fontColor.setAttribute('disabled', 'disabled');
   fontFamily.disable();
   fontSize.disable();
@@ -267,7 +292,6 @@ function disableFontOptions() {
 
 function enableFontOptions() {
   let fontOptionsDiv = document.querySelector('.font-options');
-  let fontColor = document.querySelector('.color-input');
   fontColor.removeAttribute('disabled');
   fontFamily.enable();
   fontSize.enable();
