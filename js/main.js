@@ -146,6 +146,20 @@ imgFileInput.onchange = function() {
     alert('Выберите картинку типа: jpg, png.');
     return;
   }
+
+  var reader = new FileReader();
+  
+  reader.onloadend = function (event) {    
+    var center = canvas.getCenter();
+    var data = event.target.result;                    
+    fabric.Image.fromURL(data, function(img, isError) {
+      img.set({
+        left: 0, top: 0, scaleX: 0.2, scaleY: 0.2,  
+      });
+      canvas.add(img);
+    });
+ }
+  reader.readAsDataURL(file);
 }
 
 bgFileInput.onchange = function() {
@@ -186,18 +200,7 @@ bgFileInput.onchange = function() {
       canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
     });
  }
-  reader.readAsDataURL(file);
-
- 
-//  let imgH = new Image();
-//  imgH.src = file.name;
-//  let imgF;
-//  imgH.onload = function () {
-//   imgF = new fabric.Image();
-
-// }
- 
-  
+  reader.readAsDataURL(file); 
 }
 
 function validFileType(file) {
