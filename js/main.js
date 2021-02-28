@@ -208,3 +208,12 @@ function validFileType(file) {
   }
   return false;
 }
+
+let bgColorBtn = document.querySelector('.btn-bg-color');
+
+bgColorBtn.onchange = changeBgColor;
+bgColorBtn.oninput = changeBgColor;
+
+function changeBgColor() {
+  canvas.setBackgroundColor(this.value, canvas.renderAll.bind(canvas));
+} 
