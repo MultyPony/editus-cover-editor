@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Редактор обложки</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.0/slimselect.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/slim-select/1.27.0/slimselect.min.css" rel="stylesheet"></link>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Lora&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Slab&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/main.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fabric.js/4.3.1/fabric.min.js"></script>
+    
+  </head>
+  <body>
+    <div class="container">
+      <h1>Редактор обложки</h1>
+      <section class="cover-editor">
+        <canvas id="c"></canvas>
+        <div class="ui-wrapper">
+          <div class="template col"></div>
+          <div class="col">
+            <div class="row">
+              <div class="background-picker">
+                <button class="btn-bg-img btn-img btn-sq btn"></button>
+              </div>
+              <div class="col-buttons">
+                <div class="wrap-btn-desc">
+                  <button class="btn-add-text btn-sq btn"></button>
+                  <span class="btntext">Вставить текст</span>
+                </div>
+                <div class="wrap-btn-desc">
+                  <!-- <button class="btn-bg-color btn-sq btn"></button> -->
+                  <input class="btn-bg-color btn-sq btn" type="color" id="head" name="head">
+                  <span class="btntext">Цвет фона</span>
+                </div>
+                <div class="wrap-btn-desc">
+                  <button class="btn-add-img btn-img btn-sq btn"></button>
+                  <span class="btntext">Вставить изображение</span>
+                </div>
+              </div>
+            </div>
+            <div class="font-options">
+              <div class="font-option">
+                <span class="font-options-desc">Шрифт</span>
+                <select class="ff-select" name="select"> <!--Supplement an id here instead of using 'name'-->
+                  <option value="value1">Значение 1</option>
+                  <option value="value2" selected>Значение 2</option>
+                  <option value="value3">Значение 3</option>
+                </select>
+              </div>
+              <div class="size-option">
+                <span class="font-options-desc">Размер</span>
+                <select class="fs-select">
+                  
+                </select>
+              </div>
+              <div class="color-option">
+                <span class="font-options-desc">Цвет</span>
+                <input class="color-input" type="color" id="head" name="head">
+              </div>
+            </div> 
+            <button class="btn-save btn">Сохранить и продолжить</button>
+          </div>
+        </div>
+      </section>
+      
+      
+      
+    </div>
+
+    <script src="js/main.js"></script>
+  </body>
+</html>
+

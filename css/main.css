@@ -1,0 +1,222 @@
+.container {
+    width: 900px;
+    margin: 0 auto;
+
+    font-family: 'Lora', serif;
+    font-size: .9em;
+    color: #666;
+}
+
+#c {
+    border: 1px solid black;
+}
+
+h1 {
+    font-family: 'Roboto Slab', serif;
+    font-weight: lighter;
+    font-size: 35.2px;
+    color: #444;
+    text-align: center;
+}
+
+* {
+    /* border: 1px solid red; */
+}
+
+.btn {
+    cursor: pointer;
+    outline: 0;
+}
+
+.btn-sq {
+    width: 50px;
+    height: 50px;
+
+    border: none;
+    border-radius: 5px;
+    background-color: #e5e5e8;
+}
+
+.btn-sq:hover {
+    background-color: #c6c6c7;
+}
+
+.btn-sq:active {
+    background-color: #282828;
+}
+
+.row {
+    display: flex;
+}
+
+.cover-editor {
+    display: flex;
+}
+
+.ui-wrapper {
+    margin-left: 20px;
+    margin-top: 20px;
+}
+
+.background-picker {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 136px;
+    height: 173px;
+
+    border-radius: 10px;
+    background-color: #E5E5E8;
+
+    background-image: url('../img/02.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.background-picker:before {
+    content: 'Фон';
+    position: absolute;
+    top: -20px;
+    text-align: center;
+}
+
+.col-buttons {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-left: 15px;
+}
+
+.btn-img {
+    background-image: url('../img/image-picker-white.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 28px;
+}
+
+.wrap-btn-desc {
+    display: flex;
+    align-items: center;
+}
+
+.btntext {
+    margin-left: 10px;
+}
+
+.btn-add-img {
+    background-image: url('../img/image-picker-gray.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 28px;
+}
+
+.btn-bg-img {
+    position: absolute;
+
+    background-color: #767778;
+    background-image: url('../img/image-picker-white.svg');
+    background-size: 28px;
+
+    opacity: 0.7;
+}
+
+.background-picker:hover .btn-bg-img {
+    opacity: 0.85;
+}
+
+.btn-bg-img:hover {
+    background-color: #9f9f9f;
+}
+.btn-bg-img:active {
+    background-color: #282828;
+}
+
+.btn-add-text {
+    background-color: #E5E5E8;
+    background-image: url('../img/text-option.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 20px;
+}
+
+.font-options {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 383px;
+    height: 116px;
+    margin-top: 20px;
+
+    background-color: #E5E5E8;
+    border-radius: 10px;
+}
+
+.font-options-desc {
+    margin-bottom: 10px;
+}
+
+.font-option, .size-option, .color-option {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.size-option {
+    margin: 0 10px;
+}
+
+/* .font-option .ss-single-selected {
+    width: 165px;
+    height: 40px !important;
+} */
+
+.ff-select {
+    width: 165px;
+}
+
+.fs-select {
+    width: 70px;
+    height: 40px;
+}
+
+.ss-single-selected {
+    height: 40px !important;
+}
+
+.color-input {
+    box-sizing: border-box;
+    width: 70px;
+    height: 40px;
+
+    border-radius: 5px;
+
+    outline: 0;
+}
+
+
+/* 0 Save and continue button  */
+.btn-save {
+    margin-top: 20px;
+    padding: .8em 2em .7em;
+    
+    font-family: 'Lora', serif;
+    font-size: .9em;
+    line-height: 1.2;
+    color: #fff;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 30%);
+    
+    border: 0;
+    border-radius: 0;
+    background: #db1a21;
+    outline: 0;
+}
+
+.btn-save:hover {
+    background: #a60c0a;
+}
+
+.btn-save:active {
+    background: #9B2A28;
+}
+/* 1 Save and continue button  */
