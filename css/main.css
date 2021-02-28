@@ -59,6 +59,7 @@ h1 {
 }
 
 .background-picker {
+    box-sizing: border-box;
     position: relative;
     display: flex;
     justify-content: center;
@@ -66,10 +67,9 @@ h1 {
     width: 136px;
     height: 173px;
 
+    border: 1px solid#e5e5e8;
     border-radius: 10px;
     background-color: #E5E5E8;
-
-    /* background-image: url('../img/02.jpg'); */
     background-size: cover;
     background-position: center;
 }

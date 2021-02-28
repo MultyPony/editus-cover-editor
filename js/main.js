@@ -9,16 +9,7 @@ var canvas = new fabric.Canvas('c', {
     // selectionColor: 'blue',
     selectionLineWidth: 2
   });
-  var center = canvas.getCenter();
-  canvas.setBackgroundImage('img/02.jpg', canvas.renderAll.bind(canvas), {
-    scaleX: 1, // 1
-    scaleY: 1, // 1
-    left: center.left,
-    top: center.top,
-    originX: 'center',
-    originY: 'center'
-    
-  });
+  
 
   // var imgElement = document.getElementById('my-image');
   // var imgInstance = new fabric.Image(imgElement, {
@@ -171,10 +162,42 @@ bgFileInput.onchange = function() {
 
   let bgPicker = document.querySelector('.background-picker');
   var reader = new FileReader();
-  reader.readAsDataURL(file);
-  reader.onloadend = function () {
+  
+  reader.onloadend = function (event) {
     bgPicker.style.backgroundImage = `url('${reader.result}')`;
+    
+    var center = canvas.getCenter();
+    var data = event.target.result;                    
+    fabric.Image.fromURL(data, function(img, isError) {
+      img.set({
+        scaleX: canvas.width / img.width,
+        scaleY: canvas.height / img.height,
+
+        // scaleX: 1,
+        // scaleY: 1,
+        // left: center.left,
+        // top: center.top,
+        // originX: 'center', 
+        // originY: 'center'
+
+        // width: canvas.width,
+        // height: canvas.height,
+      });
+      canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
+    });
  }
+  reader.readAsDataURL(file);
+
+ 
+//  let imgH = new Image();
+//  imgH.src = file.name;
+//  let imgF;
+//  imgH.onload = function () {
+//   imgF = new fabric.Image();
+
+// }
+ 
+  
 }
 
 function validFileType(file) {
