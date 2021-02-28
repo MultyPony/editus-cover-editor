@@ -121,3 +121,67 @@ let fontSize = new SlimSelect({
       {text: '18'}
     ],
 });
+
+
+
+
+let fileTypes = [
+  'image/jpeg',
+  'image/jpg',
+  'image/png'
+];
+
+let bgButton = document.querySelector('.btn-bg-img');
+let bgFileInput = document.querySelector('#bg-file-input');
+let imgButton = document.querySelector('.btn-add-img');
+let imgFileInput = document.querySelector('#add-img-input');
+
+bgButton.addEventListener('click', () => {
+  bgFileInput.click();
+});
+
+imgButton.addEventListener('click', () => {
+  imgFileInput.click();
+});
+
+imgFileInput.onchange = function() {
+  if (this.files.length === 0) {
+    return;
+  }
+
+  let file = this.files[0];
+
+  if (!validFileType(file)) {
+    alert('Выберите картинку типа: jpg, png.');
+    return;
+  }
+}
+
+bgFileInput.onchange = function() {
+  if (this.files.length === 0) {
+    return;
+  }
+
+  let file = this.files[0];
+
+  if (!validFileType(file)) {
+    alert('Выберите картинку типа: jpg, png.');
+    return;
+  }
+
+  let bgPicker = document.querySelector('.background-picker');
+  var reader = new FileReader();
+  reader.readAsDataURL(file);
+  reader.onloadend = function () {
+    bgPicker.style.backgroundImage = `url('${reader.result}')`;
+ }
+}
+
+function validFileType(file) {
+  for(let i = 0; i < fileTypes.length; i++) {
+    if(file.type === fileTypes[i]) {
+      return true;
+    }
+  }
+  return false;
+}
