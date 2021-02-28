@@ -96,6 +96,9 @@ bookAuthor.centerH();
 let fontFamily = new SlimSelect({
     select: '.ff-select',
     showSearch: false,
+    onChange: (info) => {
+      console.log(info)
+    },
     data: [
       {text: 'Times New Roman'},
       {text: 'Oi'},
@@ -106,6 +109,15 @@ let fontFamily = new SlimSelect({
 let fontSize = new SlimSelect({
     select: '.fs-select',
     showSearch: false,
+    onChange: (info) => {
+      console.log(info);
+      let obj = canvas.getActiveObject();
+      if (obj.get('type')==="text") {
+        obj.set("fontSize", info.value);
+        canvas.renderAll();
+        console.log(obj);
+      }
+    },
     data: [
       {text: '14'},
       {text: '16'},
@@ -220,3 +232,49 @@ bgColorBtn.oninput = changeBgColor;
 function changeBgColor() {
   canvas.setBackgroundColor(this.value, canvas.renderAll.bind(canvas));
 } 
+
+function onObjectSelected(e) {
+  console.log(e.target.get('type'));
+}
+// canvas.on('object:selected', onObjectSelected);
+// canvas.on('mouse:down', function(options) {
+//   if (options.target) {
+//     console.log('an object was clicked! ', options.target.type);
+//   }
+// });
+
+canvas.on('selection:created', function(options) {
+  if (options.target.type === 'text') {
+    console.log('Text!');
+    // console.log(options.target);
+    enableFontOptions();
+  }
+});
+
+canvas.on('selection:cleared', function(options){
+  console.log('CLEARED!');
+  disableFontOptions();
+});
+
+function disableFontOptions() {
+  let fontOptionsDiv = document.querySelector('.font-options');
+  let fontColor = document.querySelector('.color-input');
+  fontColor.setAttribute('disabled', 'disabled');
+  fontFamily.disable();
+  fontSize.disable();
+  fontOptionsDiv.classList.add('disabled');
+}
+
+function enableFontOptions() {
+  let fontOptionsDiv = document.querySelector('.font-options');
+  let fontColor = document.querySelector('.color-input');
+  fontColor.removeAttribute('disabled');
+  fontFamily.enable();
+  fontSize.enable();
+  fontOptionsDiv.classList.remove('disabled');
+}
+
+disableFontOptions();
+window.canvas = canvas;
+window.dfo = disableFontOptions;
+window.efo = enableFontOptions;
