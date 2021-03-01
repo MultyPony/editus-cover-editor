@@ -112,7 +112,7 @@ let fontFamily = new SlimSelect({
     onChange: (info) => {
       console.log(info);
       let obj = canvas.getActiveObject();
-      if (obj.get('type')==="text") {
+      if (obj.get('type')==="text" || obj.get('type')==="i-text") {
         if (fonts.includes(info.value)) {
           loadAndUse(info.value);
         } else {
@@ -138,7 +138,7 @@ let fontSize = new SlimSelect({
     onChange: (info) => {
       console.log(info);
       let obj = canvas.getActiveObject();
-      if (obj.get('type')==="text") {
+      if (obj.get('type')==="text" || obj.get('type')==="i-text") {
         obj.set("fontSize", info.value);
         canvas.renderAll();
         console.log(obj);
@@ -282,7 +282,7 @@ function onObjectSelected(e) {
 // });
 
 canvas.on('selection:created', function(options) {
-  if (options.target.type === 'text') {
+  if (options.target.type === 'text' || options.target.type === 'i-text') {
     console.log('Text!');
     // console.log(options.target);
     enableFontOptions();
@@ -301,7 +301,7 @@ fontColor.onchange = changeTextColor;
 
 function changeTextColor() {
   let obj = canvas.getActiveObject();
-    if (obj.get('type')==="text") {
+    if (obj.get('type')==="text" || obj.get('type')==="i-text") {
       obj.set("fill", this.value);
       canvas.renderAll();
       console.log(obj);
@@ -328,4 +328,14 @@ disableFontOptions();
 // window.canvas = canvas;
 // window.dfo = disableFontOptions;
 // window.efo = enableFontOptions;
+
+
+let buttonAddText = document.querySelector('.btn-add-text');
+buttonAddText.onclick = function() {
+  console.log('Txt added!');
+  let text = new fabric.IText('Ваш текст');
+  canvas.add(text);
+  text.centerH();
+  text.centerV();
+}
 
