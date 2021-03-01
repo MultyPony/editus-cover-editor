@@ -339,3 +339,27 @@ buttonAddText.onclick = function() {
   text.centerV();
 }
 
+let btnClearBgImg = document.querySelector('.btn-remove-bg-img');
+btnClearBgImg.onclick = function() {
+  console.log('clicked');
+  bgFileInput.value = '';
+  canvas.setBackgroundImage(null, canvas.renderAll.bind(canvas));
+  
+  let bgPicker = document.querySelector('.background-picker');
+  
+  bgPicker.style.backgroundImage = 'none';
+}
+
+let buttonClearAll = document.querySelector('.btn-clear-all');
+buttonClearAll.onclick = function() {
+  bgFileInput.value = '';
+  imgFileInput.value = '';
+
+  canvas.clear();
+  let bgPicker = document.querySelector('.background-picker');
+  
+  bgPicker.style.backgroundImage = 'none';
+
+  canvas.add(bookAuthor);
+  canvas.add(bookName);
+}

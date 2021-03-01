@@ -11,6 +11,42 @@
     border: 1px solid black;
 }
 
+.canvas-wrap {
+    position: relative;
+    display: flex;
+}
+
+.panel-btn {
+    position: absolute;
+    left: -60px;
+    display: flex;
+    flex-direction: column;
+}
+
+.btn-remove-bg-img {
+    margin-bottom: 10px;
+
+    background-image: url('../img/close.png');
+    background-size: 20px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.btn-remove-selected {
+    /* background-image: url('../img/delete.svg'); */
+    background-size: 25px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+#Capa_1 {
+    width: 25px;
+}
+
+.btn-remove-selected:active #Capa_1 path, .btn-remove-selected:active #Capa_1 polygon {
+    fill: white;
+}
+
 h1 {
     font-family: 'Roboto Slab', serif;
     font-weight: lighter;
@@ -191,6 +227,11 @@ h1 {
 }
 
 
+.save-and-clear {
+    display: flex;
+    justify-content: space-between;
+}
+
 /* 0 Save and continue button  */
 .btn-save {
     margin-top: 20px;
@@ -216,3 +257,27 @@ h1 {
     background: #9B2A28;
 }
 /* 1 Save and continue button  */
+
+.btn-clear-all {
+    margin-top: 20px;
+    padding: .8em 2em .7em;
+    
+    font-family: 'Lora', serif;
+    font-size: .9em;
+    line-height: 1.2;
+    color: #000;
+    text-shadow: 0 1px 0 rgb(0 0 0 / 30%);
+    
+    border: 0;
+    border-radius: 0;
+    background: #e5e5e8;
+    outline: 0;    
+}
+
+.btn-clear-all:hover {
+    background: #cacad2; 
+}
+
+.btn-clear-all:active {
+    background:#959597;
+}
