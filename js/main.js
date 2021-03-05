@@ -375,24 +375,29 @@ btnSave.onclick = function() {
   });
   // console.log(img);
   img = img.replace('data:image/jpeg;base64,', '');
-  let fD = new FormData();
-  fD.append('name', img);
-  $.ajax('/image.php',
-  {
-    method: 'POST',
-    data: fD,
-    processData: false,
-    contentType: false,
-    success: function(data){
-      makeNsavePdf(data);
-      console.log(data)
-    },
-    error: function(data){
-      console.log('EROR AJAX');
-      // console.log(data)
-    }
-  });
-  // console.log(img);
+  const imgForm = document.querySelector('#img-form');
+  const imgInput = document.querySelector('#image-data');
+
+  imgInput.value = img;
+  imgForm.action = window.location.href + 'image.php';
+  imgForm.submit();
+
+  // let fD = new FormData();
+  // fD.append('name', img);
+  // $.ajax('/image.php',
+  // {
+  //   method: 'POST',
+  //   data: fD,
+  //   processData: false,
+  //   contentType: false,
+  //   success: function(data){
+  //     makeNsavePdf(data);
+  //     console.log(data)
+  //   },
+  //   error: function(data){
+  //     console.log('EROR AJAX');
+  //   }
+  // });
 
   // let doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
   // const page = doc.getCurrentPageInfo();
