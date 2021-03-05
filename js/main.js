@@ -1,4 +1,5 @@
-// 'use strict';
+'use strict';
+const { jsPDF } = window.jspdf;
 
 var canvas = new fabric.Canvas('c', {
     width: 435, 
@@ -362,4 +363,73 @@ buttonClearAll.onclick = function() {
 
   canvas.add(bookAuthor);
   canvas.add(bookName);
+}
+
+let btnSave = document.querySelector('.btn-save');
+btnSave.onclick = function() {
+  let img = canvas.toDataURL({
+    format: 'jpeg',
+    quality: 1,
+    enableRetinaScaling: true,
+    multiplier: 5,
+  });
+  // console.log(img);
+  img = img.replace('data:image/jpeg;base64,', '');
+  let fD = new FormData();
+  fD.append('name', img);
+  $.ajax('https://localhost/fabricjs-sandbox/image.php',
+  {
+    method: 'POST',
+    data: fD,
+    processData: false,
+    contentType: false,
+    success: function(data){
+      makeNsavePdf(data);
+      console.log(data)
+    },
+    error: function(data){
+      console.log('EROR AJAX');
+      // console.log(data)
+    }
+  });
+  // console.log(img);
+
+  // let doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+  // const page = doc.getCurrentPageInfo();
+  // const scale = 72 / 25.4; // convert mm to pt (boxes use use pt)
+  // page.pageContext.trimBox = {
+  //               bottomLeftX: 2,
+  //               bottomLeftY: 2,
+  //               topRightX:   8,
+  //               topRightY:   8,
+  // };
+  // page.pageContext.bleedBox = {
+  //             bottomLeftX: 2 * scale,
+  //             bottomLeftY: 2 * scale,
+  //             topRightX:   8 * scale,
+  //             topRightY:   8 * scale
+  // };
+
+  // page.pageContext.trimBox = { ... };
+  // page.pageContext.artBox = { ... };
+
+  // doc.addImage(img, "JPEG", 0, 0, 210, 297, 'NONE');
+  // doc.save();
+
+  // doc.output('pdfobjectnewwindow', {filename: 'Zhopka'});
+  // console.log(doc.output('blob',{filename: 'Zhopka.pdf'}));
+  // console.log(doc.output());
+}
+
+function makeNsavePdf(data) {
+  let doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
+  const page = doc.getCurrentPageInfo();
+  page.pageContext.trimBox = {
+                  bottomLeftX: 2,
+                  bottomLeftY: 2,
+                  topRightX:   8,
+                  topRightY:   8,
+  };
+  doc.addImage(data, "JPEG", 0, 0, 210, 297, 'NONE');
+  doc.save();
 }
