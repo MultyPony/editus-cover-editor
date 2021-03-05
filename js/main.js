@@ -377,7 +377,7 @@ btnSave.onclick = function() {
   img = img.replace('data:image/jpeg;base64,', '');
   let fD = new FormData();
   fD.append('name', img);
-  $.ajax('https://localhost/fabricjs-sandbox/image.php',
+  $.ajax('/image.php',
   {
     method: 'POST',
     data: fD,
