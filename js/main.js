@@ -185,6 +185,7 @@ let bgButton = document.querySelector('.btn-bg-img');
 let bgFileInput = document.querySelector('#bg-file-input');
 let imgButton = document.querySelector('.btn-add-img');
 let imgFileInput = document.querySelector('#add-img-input');
+let btnClearBgImg = document.querySelector('.btn-remove-bg-img');
 
 bgButton.addEventListener('click', () => {
   bgFileInput.click();
@@ -259,7 +260,8 @@ bgFileInput.onchange = function() {
       canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
     });
  }
-  reader.readAsDataURL(file); 
+  reader.readAsDataURL(file);
+  btnClearBgImg.classList.remove('hidden');
 }
 
 function validFileType(file) {
@@ -393,7 +395,6 @@ buttonAddText.onclick = function() {
   text.centerV();
 }
 
-let btnClearBgImg = document.querySelector('.btn-remove-bg-img');
 btnClearBgImg.onclick = function() {
   console.log('clicked');
   bgFileInput.value = '';
@@ -402,6 +403,7 @@ btnClearBgImg.onclick = function() {
   let bgPicker = document.querySelector('.background-picker');
   
   bgPicker.style.backgroundImage = 'none';
+  btnClearBgImg.classList.add('hidden');
 }
 
 let buttonClearAll = document.querySelector('.btn-clear-all');
@@ -416,6 +418,7 @@ buttonClearAll.onclick = function() {
 
   canvas.add(bookAuthor);
   canvas.add(bookName);
+  btnClearBgImg.classList.add('hidden');
 }
 
 let btnSave = document.querySelector('.btn-save');
