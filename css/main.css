@@ -281,3 +281,7 @@ h1 {
 .btn-clear-all:active {
     background:#959597;
 }
+
+.hidden {
+    display: none;
+}

@@ -73,12 +73,9 @@ var group = new fabric.Group([ circle, text ], {
 var bookName = new fabric.Text('Война и мир', {
   fontSize: 40,
   top: 40,
-  // left: 20,
 });
 
 var bookAuthor = new fabric.Text('Л. Толстой', {
-  fill: 'white',
-
   fontSize: 30,
   top: 550,
   textAlign: 'center',
@@ -92,19 +89,28 @@ bookName.centerH();
 bookAuthor.centerH();
 
 
-var fonts = ["Roboto", "Lora", "Roboto Slab"];
+const fonts = ["Roboto", "Lora", "Roboto Slab"];
 
-function loadAndUse(font) {
+function loadAndUse(font, obj) {
   var myfont = new FontFaceObserver(font)
   myfont.load()
     .then(function() {
       // when font is loaded, use it.
-      canvas.getActiveObject().set("fontFamily", font);
+      obj.set("fontFamily", font);
       canvas.requestRenderAll();
     }).catch(function(e) {
       console.log(e)
       alert('Ошибка при загрузке шрифта ' + font);
     });
+}
+
+function changeFont(font, textObj) {
+  if (fonts.includes(font)) {
+    loadAndUse(font, textObj);
+  } else {
+    textObj.set("fontFamily", font);
+    canvas.renderAll();
+  }
 }
 
 let fontFamily = new SlimSelect({
@@ -113,14 +119,12 @@ let fontFamily = new SlimSelect({
     onChange: (info) => {
       console.log(info);
       let obj = canvas.getActiveObject();
-      if (obj.get('type')==="text" || obj.get('type')==="i-text") {
-        if (fonts.includes(info.value)) {
-          loadAndUse(info.value);
-        } else {
-          obj.set("fontFamily", info.value);
-          canvas.renderAll();
-        }
-        // console.log(obj);
+      if (obj.type === 'activeSelection') {
+        obj.forEachObject((curObj, index, array) => {
+          changeFont(info.value, curObj);
+        });
+      } else if (obj.get('type')==="text" || obj.get('type')==="i-text") {
+          changeFont(info.value, obj);
       }
     },
     data: [
@@ -139,10 +143,14 @@ let fontSize = new SlimSelect({
     onChange: (info) => {
       console.log(info);
       let obj = canvas.getActiveObject();
-      if (obj.get('type')==="text" || obj.get('type')==="i-text") {
+      if (obj.type === 'activeSelection') {
+        obj.forEachObject((curObj) => {
+          curObj.set("fontSize", info.value);
+          canvas.renderAll();
+        });
+      } else if (obj.get('type')==="text" || obj.get('type')==="i-text") {
         obj.set("fontSize", info.value);
         canvas.renderAll();
-        console.log(obj);
       }
     },
     data: [
@@ -272,27 +280,64 @@ function changeBgColor() {
   canvas.setBackgroundColor(this.value, canvas.renderAll.bind(canvas));
 } 
 
-function onObjectSelected(e) {
-  console.log(e.target.get('type'));
+let removeBtn = document.querySelector('.btn-remove-selected');
+
+removeBtn.onclick = function() {
+  let activeObj = canvas.getActiveObject();
+  if(activeObj.type === 'activeSelection') {
+    activeObj.forEachObject(curObj => {
+      canvas.remove(curObj);
+    });
+    canvas.renderAll();
+  } else {
+    canvas.remove(activeObj)
+    canvas.renderAll();
+  }
+  hideRemoveBtn();
 }
-// canvas.on('object:selected', onObjectSelected);
-// canvas.on('mouse:down', function(options) {
-//   if (options.target) {
-//     console.log('an object was clicked! ', options.target.type);
-//   }
-// });
+
+function showRemoveBtn() {
+  removeBtn.classList.remove('hidden');
+}
+
+function hideRemoveBtn() {
+  removeBtn.classList.add('hidden');
+}
 
 canvas.on('selection:created', function(options) {
+  showRemoveBtn();
+  if (options.target.type == 'activeSelection') {
+    for(let k in options.selected) {
+      if (options.selected[k].type !== 'text' && options.selected[k].type !== 'i-text') {
+        return;
+      }
+    }
+    enableFontOptions();
+  }
+  else if (options.target.type === 'text' || options.target.type === 'i-text') {
+    enableFontOptions();
+  }
+  else {
+    disableFontOptions();
+  }
+});
+
+canvas.on('selection:updated', function(options){
+  if (options.target.type == 'activeSelection') {
+    console.log('activeSelection');
+  }
   if (options.target.type === 'text' || options.target.type === 'i-text') {
     console.log('Text!');
-    // console.log(options.target);
     enableFontOptions();
+  }
+  else {
+    disableFontOptions();
   }
 });
 
 canvas.on('selection:cleared', function(options){
-  console.log('CLEARED!');
   disableFontOptions();
+  hideRemoveBtn();
 });
 
 let fontColor = document.querySelector('.color-input');
@@ -302,10 +347,14 @@ fontColor.onchange = changeTextColor;
 
 function changeTextColor() {
   let obj = canvas.getActiveObject();
-    if (obj.get('type')==="text" || obj.get('type')==="i-text") {
+    if (obj.type === 'activeSelection') {
+      obj.forEachObject((curObj) => {
+        curObj.set("fill", this.value);
+        canvas.renderAll();
+      });
+    } else if (obj.get('type')==="text" || obj.get('type')==="i-text") {
       obj.set("fill", this.value);
       canvas.renderAll();
-      console.log(obj);
     }
 }
 
@@ -323,12 +372,16 @@ function enableFontOptions() {
   fontFamily.enable();
   fontSize.enable();
   fontOptionsDiv.classList.remove('disabled');
+
+  let activeObj = canvas.getActiveObject();
+
+  if (activeObj.type === 'text' || activeObj.type === 'i-text') {
+    fontFamily.set(activeObj.get("fontFamily"));
+    fontColor.value = activeObj.get("fill");
+  }
 }
 
 disableFontOptions();
-// window.canvas = canvas;
-// window.dfo = disableFontOptions;
-// window.efo = enableFontOptions;
 
 
 let buttonAddText = document.querySelector('.btn-add-text');
