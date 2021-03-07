@@ -1,0 +1,848 @@
+@font-face {
+	font-family: 'Alexandra Zeferino Three';
+	src: url('../fonts/Alexandra Zeferino Three.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Andantino script';
+	src: url('../fonts/Andantino script.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Aquarelle';
+	src: url('../fonts/Aquarelle.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Arial Black';
+	src: url('../fonts/Arial Black.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Arial Narrow Bold Italic';
+	src: url('../fonts/Arial Narrow Bold Italic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Arial Narrow Bold';
+	src: url('../fonts/Arial Narrow Bold.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Arial Narrow Italic';
+	src: url('../fonts/Arial Narrow Italic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Arial Narrow';
+	src: url('../fonts/Arial Narrow.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Arial';
+	src: url('../fonts/Arial.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Arialbd';
+	src: url('../fonts/Arialbd.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Arialbi';
+	src: url('../fonts/Arialbi.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Ariali';
+	src: url('../fonts/Ariali.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Ariston';
+	src: url('../fonts/Ariston.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'B52';
+	src: url('../fonts/B52.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'BadScript-Regular';
+	src: url('../fonts/BadScript-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'BebasNeue Bold';
+	src: url('../fonts/BebasNeue Bold.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'BebasNeue Book';
+	src: url('../fonts/BebasNeue Book.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'BebasNeue Regular';
+	src: url('../fonts/BebasNeue Regular.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Cambria Bold';
+	src: url('../fonts/Cambria Bold.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Cambria Italic';
+	src: url('../fonts/Cambria Italic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Cambria';
+	src: url('../fonts/Cambria.ttc');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Cambriaz';
+	src: url('../fonts/Cambriaz.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Cassandra';
+	src: url('../fonts/Cassandra.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'CometaCTT';
+	src: url('../fonts/CometaCTT.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Corinthia';
+	src: url('../fonts/Corinthia.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Cormorant-Bold';
+	src: url('../fonts/Cormorant-Bold.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Cormorant-Italic';
+	src: url('../fonts/Cormorant-Italic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Cormorant-Light';
+	src: url('../fonts/Cormorant-Light.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Cormorant-LightItalic';
+	src: url('../fonts/Cormorant-LightItalic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Cormorant-Medium';
+	src: url('../fonts/Cormorant-Medium.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Cormorant-MediumItalic';
+	src: url('../fonts/Cormorant-MediumItalic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Cormorant-Regular';
+	src: url('../fonts/Cormorant-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Cormorant-SemiBoldItalic';
+	src: url('../fonts/Cormorant-SemiBoldItalic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Courier Bold Italic';
+	src: url('../fonts/Courier Bold Italic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Courier Bold';
+	src: url('../fonts/Courier Bold.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Courier Italic';
+	src: url('../fonts/Courier Italic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Courier New';
+	src: url('../fonts/Courier New.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'CyrillicBrush-Medium';
+	src: url('../fonts/CyrillicBrush-Medium.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'CyrillicOld';
+	src: url('../fonts/CyrillicOld.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Deutsch Gothic';
+	src: url('../fonts/Deutsch Gothic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Didona Regular';
+	src: url('../fonts/Didona Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Ekaterina Velikaya One';
+	src: url('../fonts/Ekaterina Velikaya One.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Ekaterina Velikaya Two';
+	src: url('../fonts/Ekaterina Velikaya Two.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Garamond Bold';
+	src: url('../fonts/Garamond Bold.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Garamond Italic';
+	src: url('../fonts/Garamond Italic.TTF');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Garamond';
+	src: url('../fonts/Garamond.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Georgia Bold Italic';
+	src: url('../fonts/Georgia Bold Italic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Georgia Bold';
+	src: url('../fonts/Georgia Bold.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Georgia Italic';
+	src: url('../fonts/Georgia Italic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Georgia';
+	src: url('../fonts/Georgia.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Good Vibes Pro';
+	src: url('../fonts/Good Vibes Pro.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HelveticaNeueCyr-Black';
+	src: url('../fonts/HelveticaNeueCyr-Black.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HelveticaNeueCyr-BlackItalic';
+	src: url('../fonts/HelveticaNeueCyr-BlackItalic.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HelveticaNeueCyr-Bold';
+	src: url('../fonts/HelveticaNeueCyr-Bold.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HelveticaNeueCyr-BoldItalic';
+	src: url('../fonts/HelveticaNeueCyr-BoldItalic.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HelveticaNeueCyr-Italic';
+	src: url('../fonts/HelveticaNeueCyr-Italic.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HelveticaNeueCyr-Light';
+	src: url('../fonts/HelveticaNeueCyr-Light.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HelveticaNeueCyr-LightItalic';
+	src: url('../fonts/HelveticaNeueCyr-LightItalic.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HelveticaNeueCyr-Medium';
+	src: url('../fonts/HelveticaNeueCyr-Medium.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HelveticaNeueCyr-Roman';
+	src: url('../fonts/HelveticaNeueCyr-Roman.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HelveticaNeueCyr-Thin';
+	src: url('../fonts/HelveticaNeueCyr-Thin.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HelveticaNeueCyr-ThinItalic';
+	src: url('../fonts/HelveticaNeueCyr-ThinItalic.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HelveticaNeueCyr-UltraLight';
+	src: url('../fonts/HelveticaNeueCyr-UltraLight.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HelveticaNeueCyr-UltraLightItalic';
+	src: url('../fonts/HelveticaNeueCyr-UltraLightItalic.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Impact';
+	src: url('../fonts/Impact.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Inspiration';
+	src: url('../fonts/Inspiration.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Journalism';
+	src: url('../fonts/Journalism.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lemon Tuesday';
+	src: url('../fonts/Lemon Tuesday.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Liana';
+	src: url('../fonts/Liana.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lifehack Sans Medium';
+	src: url('../fonts/Lifehack Sans Medium.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lighthaus';
+	src: url('../fonts/Lighthaus.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Literaturnaya Bold';
+	src: url('../fonts/Literaturnaya Bold.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Literaturnaya Italic';
+	src: url('../fonts/Literaturnaya Italic.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Literaturnaya';
+	src: url('../fonts/Literaturnaya.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lobster';
+	src: url('../fonts/Lobster.eot');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lobster';
+	src: url('../fonts/Lobster.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lobster';
+	src: url('../fonts/Lobster.svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lobster';
+	src: url('../fonts/Lobster.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Lobster.';
+	src: url('../fonts/Lobster.woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'MarkerFelt';
+	src: url('../fonts/MarkerFelt.ttc');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Martina scriptC';
+	src: url('../fonts/Martina scriptC.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Maya';
+	src: url('../fonts/Maya.eot');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Maya';
+	src: url('../fonts/Maya.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Maya';
+	src: url('../fonts/Maya.svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Maya';
+	src: url('../fonts/Maya.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Maya.';
+	src: url('../fonts/Maya.woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Medieval English';
+	src: url('../fonts/Medieval English.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Minion Pro Bold Italic';
+	src: url('../fonts/Minion Pro Bold Italic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'MinionPro-Bold';
+	src: url('../fonts/MinionPro-Bold.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'MinionPro-Italic';
+	src: url('../fonts/MinionPro-Italic.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'MinionPro-MediumIt';
+	src: url('../fonts/MinionPro-MediumIt.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'MinionPro-Regular';
+	src: url('../fonts/MinionPro-Regular.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Mon Amour One';
+	src: url('../fonts/Mon Amour One.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Monotype Corsiva';
+	src: url('../fonts/Monotype Corsiva.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Noteworthy-Bold';
+	src: url('../fonts/Noteworthy-Bold.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Noteworthy-Light';
+	src: url('../fonts/Noteworthy-Light.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Philosopher-Bold';
+	src: url('../fonts/Philosopher-Bold.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Philosopher-Regular';
+	src: url('../fonts/Philosopher-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Pobeda Regular';
+	src: url('../fonts/Pobeda Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Rex Bold';
+	src: url('../fonts/Rex Bold.otf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto-Black';
+	src: url('../fonts/Roboto-Black.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto-BlackItalic';
+	src: url('../fonts/Roboto-BlackItalic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto-Bold';
+	src: url('../fonts/Roboto-Bold.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto-BoldItalic';
+	src: url('../fonts/Roboto-BoldItalic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto-Italic';
+	src: url('../fonts/Roboto-Italic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto-Light';
+	src: url('../fonts/Roboto-Light.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto-LightItalic';
+	src: url('../fonts/Roboto-LightItalic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto-Medium';
+	src: url('../fonts/Roboto-Medium.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto-MediumItalic';
+	src: url('../fonts/Roboto-MediumItalic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto-Regular';
+	src: url('../fonts/Roboto-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'RobotoSlabBold';
+	src: url('../fonts/RobotoSlabBold.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'RobotoSlabLight';
+	src: url('../fonts/RobotoSlabLight.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'RobotoSlabRegular';
+	src: url('../fonts/RobotoSlabRegular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto-Thin';
+	src: url('../fonts/Roboto-Thin.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Roboto-ThinItalic';
+	src: url('../fonts/Roboto-ThinItalic.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'RodchenkoC';
+	src: url('../fonts/RodchenkoC.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Rosa Marena';
+	src: url('../fonts/Rosa_Marena.eot');
+	src: local('☺'), url('../fonts/Rosa_Marena.woff') format('woff'), url('../fonts/Rosa_Marena.ttf') format('truetype'), url('../fonts/Rosa_Marena.svg') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Snell Roundhand';
+	src: url('../fonts/Snell Roundhand.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'spisok';
+	src: url('../fonts/spisok.txt');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'Sunday-Regular';
+	src: url('../fonts/Sunday-Regular.ttf');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: '';
+	src: url('../fonts/');
+	font-weight: normal;
+	font-style: normal;
+}
+
