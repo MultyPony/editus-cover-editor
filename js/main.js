@@ -2,97 +2,125 @@
 const { jsPDF } = window.jspdf;
 
 var canvas = new fabric.Canvas('c', {
-    width: 435, 
-    height: 645,
+    width: 600, 
+    height: 430,
     backgroundColor: 'rgb(100,100,200)',
     // backgroundImage: '02.jpg',
     // backgroundImage: imgElement,
     // selectionColor: 'blue',
-    selectionLineWidth: 2
+    selectionLineWidth: 2,
+    controlsAboveOverlay: true,
+    preserveObjectStacking: true,
   });
   
-
-  // var imgElement = document.getElementById('my-image');
-  // var imgInstance = new fabric.Image(imgElement, {
-  //   left: 100,
-  //   top: 100,
-  //   angle: 0,
-  //   opacity: 0.85
-  // });
-  // // canvas.add(imgInstance);
-
-  // var rect = new fabric.Rect({
-  //   left: 100,
-  //   top: 100,
-  //   fill: 'red',
-  //   width: 40,
-  //   height: 40
-  // });
-  // canvas.add(rect);
-  // rect.set({ left: 20, top: 50 });
-  // // canvas.renderAll();
-  // rect.set({ strokeWidth: 5, stroke: 'rgba(100,200,200,0.5)' });
-  // rect.set('selectable', false);
-  // canvas.selection = false;
-
-  // fabric.Image.fromURL('my_image.jpg', function(oImg) {
-  //   oImg.scale(0.5).set('flipX', true);
-  //   canvas.add(oImg);
-  // });
-  // var text = new fabric.Text('hello world', { left: 100, top: 100 });
-  // var OiText = new fabric.Text("I'm in Comic Sans", {
-  //   fontFamily: 'Oi'
-  // });
-  // var interText = new fabric.IText("Interactivochka", {
-  //   fontFamily: 'Oi'
-  // });
-  // canvas.add(text);
-  // canvas.add(OiText);
-  // canvas.add(interText);
-
-  var circle = new fabric.Circle({
-    radius: 100,
+  var frontCover = new fabric.Rect({
+    width: 290,
+    height: 427,
+    top: 0,
+    left: canvas.width/2 + 7,
     fill: '#eef',
-    scaleY: 0.5,
-    originX: 'center',
-    originY: 'center'
+    originX: 'left',
+    originY: 'top',
+    lockMovementX: true,
+    lockMovementY: true,
+    selectable: false,
+    hoverCursor: 'arrow',
+    
+    // hasBorder: true,
+    // borderColor: 'red',
 });
 
-var text = new fabric.Text('ТОП-10', {
-  fontSize: 30,
-  originX: 'center',
-  originY: 'center'
-});
-
-var group = new fabric.Group([ circle, text ], {
-  left: 150,
-  top: 100,
-  angle: -10
+var backCover = new fabric.Rect({
+  width: 291,
+  height: 431,
+  top: -1,
+  left: -1,
+  fill: '#eef',
+  originX: 'left',
+  originY: 'top',
+  lockMovementX: true,
+  lockMovementY: true,
+  selectable: false,
+  hoverCursor: 'arrow',
 });
 
 var bookName = new fabric.Text('Война и мир', {
-  fontFamily: 'Arial Black',
+  fontFamily: 'Times New Roman',
   fontSize: 40,
   top: 40,
   textAlign: 'center',
 });
 
 var bookAuthor = new fabric.Text('Л. Толстой', {
-  fontFamily: 'Arial Black',
+  fontFamily: 'Times New Roman',
   fontSize: 30,
-  top: 550,
+  top: 300,
   textAlign: 'center',
 });
 
 
-canvas.add(group);
+canvas.add(frontCover);
+canvas.add(backCover);
+
 canvas.add(bookName);
 canvas.add(bookAuthor);
+
 bookName.centerH();
 bookAuthor.centerH();
 
+// Zooming
 
-// const fonts = ["Roboto", "Lora", "Roboto Slab", "Lobster", "Maya"];
+// canvas.on('mouse:wheel', function(opt) {
+//   var delta = opt.e.deltaY;
+//   var zoom = canvas.getZoom();
+//   zoom *= 0.999 ** delta;
+//   if (zoom > 20) zoom = 20;
+//   if (zoom < 0.01) zoom = 0.01;
+//   canvas.setZoom(zoom);
+//   opt.e.preventDefault();
+//   opt.e.stopPropagation();
+// })
+
+// canvas.on('selection:created', options => {
+//   options.target.bringToFront();
+// });
+
+canvas.on({
+  // 'selection:created': onCoverSelect,
+  // 'selection:updated': onCoverSelect,
+  'mouse:down': onCoverSelect,
+});
+
+let isFrontPicked = false;
+let isBackPicked = false;
+
+function onCoverSelect(options) {
+  if (options.target == frontCover) {
+    if (isBackPicked) {
+      isBackPicked = false;
+      backCover.set('strokeWidth', 0);
+    }
+    console.log('popadanie');
+    frontCover.set('stroke', '#9b2a28');
+    frontCover.set('strokeWidth', 3);
+    isFrontPicked = true;    
+  } 
+  else if (options.target == backCover) {
+    if (isFrontPicked) {
+      isFrontPicked = false;
+      frontCover.set('strokeWidth', 0);
+    }
+    console.log('popadanie');
+    backCover.set('stroke', '#9b2a28');
+    backCover.set('strokeWidth', 3);
+    isBackPicked = true;
+  }
+  else {
+    // frontCover.set('stroke', '#9b2a28');
+    frontCover.set('strokeWidth', 0);
+  }
+}
+
 const fonts = [
 	'Alexandra Zeferino Three', 
 	'Andantino script', 
@@ -371,6 +399,7 @@ let fontFamily = new SlimSelect({
       {text: 'Rosa Marena'},
       {text: 'Snell Roundhand'},
       {text: 'Sunday-Regular'},
+      {text: 'Times New Roman'},
     ],
 });
 
@@ -478,24 +507,87 @@ bgFileInput.onchange = function() {
     bgPicker.style.backgroundImage = `url('${reader.result}')`;
     
     var center = canvas.getCenter();
-    var data = event.target.result;                    
-    fabric.Image.fromURL(data, function(img, isError) {
-      img.set({
-        scaleX: canvas.width / img.width,
-        scaleY: canvas.height / img.height,
+    var data = event.target.result;
+    // console.log(data);
+    if (isFrontPicked) {
+      fabric.Image.fromURL(data, function(img, isError) {
+        img.set({
+          left: canvas.width/2 + 7,
+          top: 0,
+          // width: 290,
+          // height: 427,
+          // skewY: 25,
+          // skewX: 25,
+          scaleX: 0.2,
+          scaleY: 0.2,
+          clipPath: new fabric.Rect({
+            width: 1000,
+            height: 1000,
+            // dirty: true,
+            top: 0,
+            left: 0,
+            originX: 'center',
+            originY: 'center',
+            // absolutePositioned: true,
+          }),
+          // originX: 'center',
+          // originY: 'center',
 
-        // scaleX: 1,
-        // scaleY: 1,
-        // left: center.left,
-        // top: center.top,
-        // originX: 'center', 
-        // originY: 'center'
-
-        // width: canvas.width,
-        // height: canvas.height,
+        });
+        canvas.add(img);
+        canvas.bringForward(img);
+        img.scaleToHeight(427, false);
+        // img.scaleToWidth(290, false);
+        img.centerV();
       });
-      canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas));
-    });
+      canvas.renderAll();
+
+
+      // var frontCover = new fabric.Rect({
+      //   width: 290,
+      //   height: 427,
+      //   top: 0,
+      //   left: canvas.width/2 + 7,
+      //   fill: '#eef',
+      //   originX: 'left',
+      //   originY: 'top',
+      //   lockMovementX: true,
+      //   lockMovementY: true,
+      //   selectable: false,
+      //   hoverCursor: 'arrow',
+        
+        // hasBorder: true,
+    //     // borderColor: 'red',
+    // });
+
+
+
+
+
+    }
+    else if (isBackPicked) {
+      canvas.renderAll();
+    }
+    else return;                 
+    // fabric.Image.fromURL(data, function(img, isError) {
+    //   img.set({
+    //     scaleX: canvas.width / img.width,
+    //     scaleY: canvas.height / img.height,
+
+    //     // scaleX: 1,
+    //     // scaleY: 1,
+    //     // left: center.left,
+    //     // top: center.top,
+    //     // originX: 'center', 
+    //     // originY: 'center'
+
+    //     // width: canvas.width,
+    //     // height: canvas.height,
+    //   });
+      
+      
+      // canvas.setBackgroundImage(img, canvas.renderAll.bind(canvas)); // На весь канвас
+    // });
  }
   reader.readAsDataURL(file);
   btnClearBgImg.classList.remove('hidden');
